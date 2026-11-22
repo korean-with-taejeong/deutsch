@@ -144,6 +144,9 @@ h1{font-size:clamp(28px,6.4vw,36px);line-height:1.15;margin:0 0 10px;color:var(-
 .acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:10px}
 .sendmsg:empty{display:none}
 .sendmsg{margin-top:10px}
+.ipadmsg{background:var(--bg2);border-radius:16px;padding:14px 16px;font-size:calc(14.5px*var(--z));line-height:1.6}
+.ipadmsg b{color:var(--hi)}.ipadmsg ol{margin:6px 0 8px;padding-left:20px}.ipadmsg p{margin:0 0 4px;color:var(--mut)}.ipadmsg .fn{word-break:break-all;color:var(--at);font-weight:600}
+.retry{font-size:13.5px;color:var(--mut);text-decoration:underline;min-height:40px;font-weight:700}
 .fname{font-size:12.5px;color:var(--dim);margin-top:8px;word-break:break-all}
 .empty{font-size:14.5px;color:var(--mut);padding:10px 2px;margin:0}
 .ck{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1.5px solid var(--line);border-radius:18px;margin-bottom:10px;cursor:pointer;font-size:calc(16px*var(--z));line-height:1.55}
@@ -345,9 +348,15 @@ async function fillMine(){ for (const el of app.querySelectorAll('.mine')) { con
  el.innerHTML = '<audio src="' + r.url + '" controls preload="metadata"></audio><div class="cmp"><button class="pill sm" data-act="play" data-own="cm' + key + '" data-st="' + st + '" data-en="' + en + '"' + (key === 'full' ? ' data-follow="1"' : '') + '><span class="o">' + I.play + '원어민</span><span class="x">' + I.stop + '멈추기</span></button><button class="pill sm" data-act="me"><span class="o">' + I.play + '내 녹음</span></button><button class="pill sm" data-act="seq" data-steps="mu" data-own="cb' + key + '" data-st="' + st + '" data-en="' + en + '"><span class="o">' + I.play + '원어민 → 내 녹음</span><span class="x">' + I.stop + '<span class="sn"></span> · 멈추기</span></button><button class="pill sm" data-act="seq" data-steps="mumu" data-own="ab' + key + '" data-st="' + st + '" data-en="' + en + '"><span class="o">' + I.ab + '번갈아 듣기</span><span class="x">' + I.stop + '<span class="sn"></span> · 멈추기</span></button></div><div class="acts"><button class="obtn" data-act="save" data-key="' + key + '">' + I.save + '저장하기</button><button class="ybtn" data-act="send" data-key="' + key + '">' + I.send + '튜터에게 보내기</button></div><div class="sendmsg"></div><div class="fname">' + esc(fileName(key, r)) + ' · ' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') + ' 녹음</div>';
  const md = el.querySelector('audio'); md.addEventListener('play', () => { if (!md.muted && job && !(seq && seq.m === md)) stop(); }); } paint(); }
 function showNoShare(el){ const box = el.closest('.mine').querySelector('.sendmsg'); box.innerHTML = '<p class="recmsg info">이 기기에서는 바로 공유가 안 돼요. ‘저장하기’로 파일을 저장한 뒤 메신저나 메일에 첨부해 튜터에게 보내 주세요.</p>'; }
-async function doSave(key){ const r = await getRec(key); if (!r) return; const a = document.createElement('a'); a.href = r.url; a.download = fileName(key, r); document.body.appendChild(a); a.click(); a.remove(); toast('저장: ' + fileName(key, r)); }
-async function doSend(key, el){ const r = await getRec(key); if (!r) return; let f; try { f = new File([r.blob], fileName(key, r), {type: r.type}); } catch (e) { showNoShare(el); return; }
+async function doSave(key, quiet){ const r = await getRec(key); if (!r) return; const a = document.createElement('a'); a.href = r.url; a.download = fileName(key, r); document.body.appendChild(a); a.click(); a.remove(); if (!quiet) toast('저장: ' + fileName(key, r)); }
+/* iPadOS 26 shows the web share sheet in the top-left corner, cut off under the status bar (it gets no anchor).
+   On iPad: save the file and share it from the Files app, where the share sheet is anchored properly. */
+const IS_IPAD = /iPad/.test(navigator.userAgent) || (/Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+async function shareNow(key, el){ const r = await getRec(key); if (!r) return; let f; try { f = new File([r.blob], fileName(key, r), {type: r.type}); } catch (e) { showNoShare(el); return; }
  if (navigator.canShare && navigator.canShare({files: [f]})) { try { await navigator.share({files: [f], title: L.title + ' · ' + partLabel(key)}); } catch (e) { if (e.name !== 'AbortError') showNoShare(el); } } else showNoShare(el); }
+async function doSend(key, el){ if (!IS_IPAD) return shareNow(key, el);
+ await doSave(key, true); const r = await getRec(key); const box = el.closest('.mine').querySelector('.sendmsg');
+ box.innerHTML = '<div class="ipadmsg"><b>아이패드에서는 파일 앱에서 보내요</b><ol><li>확인 창이 뜨면 <b>Laden</b>(다운로드)을 누르세요.</li><li><b>Dateien</b>(파일) 앱 → <b>Downloads</b>에서 <span class="fn">' + esc(r ? fileName(key, r) : '') + '</span>을 길게 누르고 <b>Teilen</b>(공유) → 튜터에게 보내세요.</li></ol><p>Safari 주소창 옆 ↓(다운로드) 버튼에서 파일을 열어 공유해도 돼요. 아이패드의 웹 공유 창은 화면 위쪽에 잘려서 떠서(iPadOS 문제) 이렇게 보내는 게 안전해요.</p><button class="retry" data-act="sendnow" data-key="' + key + '">그래도 공유 창 바로 열기</button></div>'; box.scrollIntoView({block: 'center', behavior: 'smooth'}); }
 
 /* ---------------- recording: m4a where the browser records it, otherwise mp3 ---------------- */
 let mr = null, mrKey = null, mrT = 0, mrIv = 0;
@@ -395,6 +404,7 @@ app.addEventListener('click', e => {
  if (a === 'seq') { if (seq && seq.owner === own) { stop(); return; } const m = el.closest('.mine').querySelector('audio'); startSeq(own, +el.dataset.st, +el.dataset.en, m, el.dataset.steps.split(''), el.closest('.mine').dataset.key === 'full'); return; }
  if (a === 'save') { doSave(el.dataset.key); return; }
  if (a === 'send') { doSend(el.dataset.key, el); return; }
+ if (a === 'sendnow') { shareNow(el.dataset.key, el); return; }
  if (a === 'done') { const id = el.dataset.to, g = pr(id); g.done = true; g.step = 1; saveProg(); const i = P.findIndex(x => x.id === id), nx = P.slice(i + 1).concat(P.slice(0, i)).find(x => !(prog[x.id] && prog[x.id].done)); toastMsg = '단락 ' + P[i].key + ' 완료!' + (nx ? ' 다음은 ' + nx.key : ' 이제 전체 리허설'); location.hash = 'home'; return; }
 });
 app.addEventListener('change', e => { const x = e.target; if (x.matches('input[type=checkbox][data-ck]')) { const g = pr(x.dataset.ck); g.checks = g.checks || []; g.checks[+x.dataset.i] = x.checked; saveProg(); x.closest('.ck').classList.toggle('c', x.checked); } });
