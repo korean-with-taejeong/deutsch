@@ -3,7 +3,8 @@
 독일어 원고로 만드는 발음 연습 앱. 원어민 음성을 듣고 → 덩어리로 따라 하고 → 녹음해서 원어민과 비교하고 → 스스로 확인해요.
 
 - 연습 목록: https://korean-with-taejeong.github.io/deutsch/
-- 녹음과 진행 상황은 각 기기(브라우저)에만 저장돼요. 아무 데도 올라가지 않아요.
+- 녹음과 진행 상황은 먼저 각 기기(브라우저)에 저장돼요.
+- **기기 연동(선택)**: 첫 화면 → 기기 연동에서 비공개 저장소(`deutsch-sync`)와 접근 키를 넣으면 아이폰·아이패드·맥끼리 진행 상황과 녹음이 맞춰져요. 키는 각 브라우저에만 보관돼요. 공개 저장소는 연결되지 않아요.
 
 ## 구조
 
@@ -17,6 +18,13 @@
 | `template/de-practice-template.html` | 앱 템플릿 (자기소개_발음연습.html의 디자인 + 한국어 앱의 녹음·비교·저장) |
 | `tools/` | `audio.py` (음성·시간 맞추기), `build.py` (앱·목록 만들기), `setlib.py` (원고 표시 읽기) |
 | `vendor/lame.min.js` | m4a로 녹음이 안 되는 기기에서 mp3로 바꾸는 인코더 (LAME, LGPL, lame.sourceforge.net) |
+
+## 기기 연동이 저장하는 것 (비공개 저장소)
+
+- `sync/<id>.json` — 단락별 진행 상황(단계, 체크, 완료)과 녹음 목록
+- `sync/<id>/<단락>-<시각>.<m4a|mp3>` — 단락마다 가장 최근 녹음 하나 (새 녹음이 올라가면 이전 파일은 지워져요)
+- 단락마다 더 최근에 바뀐 쪽이 이겨요. ‘완료’는 한 번 완료되면 유지돼요.
+- 키 만들기: github.com/settings/personal-access-tokens/new → Only select repositories: deutsch-sync → Contents: Read and write
 
 ## 원고 표시법 (`sets/<id>.json`의 `segs`)
 

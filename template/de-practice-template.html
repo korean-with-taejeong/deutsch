@@ -147,6 +147,9 @@ h1{font-size:clamp(28px,6.4vw,36px);line-height:1.15;margin:0 0 10px;color:var(-
 .ipadmsg{background:var(--bg2);border-radius:16px;padding:14px 16px;font-size:calc(14.5px*var(--z));line-height:1.6}
 .ipadmsg b{color:var(--hi)}.ipadmsg ol{margin:6px 0 8px;padding-left:20px}.ipadmsg p{margin:0 0 4px;color:var(--mut)}.ipadmsg .fn{word-break:break-all;color:var(--at);font-weight:600}
 .retry{font-size:13.5px;color:var(--mut);text-decoration:underline;min-height:40px;font-weight:700}
+.syform{display:grid;gap:12px;margin:0 0 8px}.syform label{display:grid;gap:6px;font-size:14px;color:var(--mut);font-weight:600}
+.syform input{min-height:52px;border-radius:14px;border:1.5px solid var(--line);padding:0 14px;font:16px/1.4 "Atkinson Hyperlegible Next",-apple-system,sans-serif;background:var(--card);color:var(--ink)}
+ol.steps{margin:0 0 14px;padding-left:20px;font-size:calc(15px*var(--z));line-height:1.7}ol.steps li{margin-bottom:8px}ol.steps a{color:var(--at);font-weight:700}
 .fname{font-size:12.5px;color:var(--dim);margin-top:8px;word-break:break-all}
 .empty{font-size:14.5px;color:var(--mut);padding:10px 2px;margin:0}
 .ck{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;border:1.5px solid var(--line);border-radius:18px;margin-bottom:10px;cursor:pointer;font-size:calc(16px*var(--z));line-height:1.55}
@@ -186,7 +189,7 @@ details.tips[open] summary::after{content:"–"}
 details.tips ul{margin:0 0 14px;padding-left:20px;color:var(--ink);font-size:calc(16px*var(--z));line-height:1.7}
 .foot{font-size:12.5px;color:var(--dim);margin:22px 0 0}
 .pn{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--bg2);color:var(--at);font-size:13px;font-weight:700;margin-right:8px;vertical-align:.1em;font-family:"IBM Plex Sans KR",sans-serif;line-height:1}
-.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--y);color:var(--yi);font-weight:700;padding:12px 20px;border-radius:999px;z-index:9;white-space:nowrap;animation:tu .3s ease}
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--y);color:var(--yi);font-weight:700;padding:12px 20px;border-radius:22px;z-index:9;width:max-content;max-width:min(92vw,560px);text-align:center;line-height:1.45;animation:tu .3s ease}
 @keyframes tu{from{opacity:0;transform:translate(-50%,10px)}}
 .load{font-size:13px;color:var(--dim);margin:-8px 0 14px}
 @media (prefers-reduced-motion:reduce){.toast,.ybtn.recing::before{animation:none}.sg,.sw::after{transition:none}}
@@ -218,6 +221,7 @@ const I = {
  l:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
  r:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>',
  wave:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 10v4M7 6v12M11 3v18M15 7v10M19 10v4"/></svg>',
+ cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 18.5h10.5a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.6 9.1 4.75 4.75 0 0 0 7 18.5z"/></svg>',
  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4.5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 4.5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>'
 };
 
@@ -235,7 +239,7 @@ const LS = {get(k, d){ try { const v = localStorage.getItem('de:' + k); return v
 const PK = L.id + ':prog';
 let prog = LS.get(PK, {});
 const pr = id => prog[id] || (prog[id] = {step: 1, done: false, checks: []});
-const saveProg = () => LS.set(PK, prog);
+const saveProg = id => { if (id && prog[id]) prog[id].u = Date.now(); LS.set(PK, prog); syncSoon(4000); };
 let spd = LS.get('spd', 1), gap = LS.get('gap', true), showIPA = LS.get('ipa', true);
 const itemIx = {};
 if (LS.get('look', 'day') === 'night') ROOT.dataset.look = 'night';
@@ -251,7 +255,7 @@ const idb = {p:null, open(){ if (this.p) return this.p; this.p = new Promise(res
 const recs = {};
 const rk = key => L.id + ':' + key;
 async function getRec(key){ if (recs[key]) return recs[key]; const v = await idb.get(rk(key)); if (!v || !v.blob) return null; recs[key] = {...v, url: URL.createObjectURL(v.blob)}; return recs[key]; }
-async function saveRec(key, blob, type, ext){ if (recs[key]) URL.revokeObjectURL(recs[key].url); const v = {blob, type, ext, t: Date.now()}; recs[key] = {...v, url: URL.createObjectURL(blob)}; await idb.put(rk(key), v); }
+async function saveRec(key, blob, type, ext, t){ if (recs[key]) URL.revokeObjectURL(recs[key].url); const v = {blob, type, ext, t: t || Date.now()}; recs[key] = {...v, url: URL.createObjectURL(blob)}; await idb.put(rk(key), v); }
 const partLabel = key => key === 'full' ? '전체' : '단락' + key.toUpperCase();
 const fileName = (key, r) => [ymd(new Date(r.t)), (L.short || L.id).replace(/[\\/:*?"<>|\s]+/g, ''), partLabel(key)].join('_') + '.' + r.ext;
 
@@ -305,7 +309,7 @@ function marks(p){ const n = p.items.length, ix = itemIx[p.id] || 0, it = p.item
  if (typeof ref === 'number') { word = '<b>' + esc(pw(ref)) + '</b>' + (W[ref].ipa ? '<span class="ipa1">[' + esc(W[ref].ipa) + ']</span>' : ''); btns = '<button class="mini" data-act="word" data-own="w' + ref + '" data-w="' + ref + '"><span class="o">' + I.play + '단어만 듣기</span><span class="x">' + I.stop + '멈추기</span></button>' + segBtn('문장으로 듣기'); }
  else { word = '<b>' + (ref === '@t' ? S[s].tone : ref === '@l' ? '웃음 쉼' : ref === '@q' ? '짧은 쉼' : (S[s].pause === '||' ? '긴 쉼' : S[s].pause === '|' ? '짧은 쉼' : '쉼')) + '</b>'; btns = segBtn('이 부분 듣기'); }
  return '<div class="mh"><b>표시 하나하나</b><span>◀ ▶로 하나씩 넘겨요</span></div><div class="nav"><button class="circ" data-act="item" data-d="-1"' + (ix === 0 ? ' disabled' : '') + ' aria-label="이전 표시">' + I.l + '</button><span class="cnt">' + (ix + 1) + ' / ' + n + '</span><button class="circ" data-act="item" data-d="1"' + (ix === n - 1 ? ' disabled' : '') + ' aria-label="다음 표시">' + I.r + '</button></div><div class="mi"><span class="tag k' + TYPEK[ty] + '">' + esc(ty) + '</span><p>' + word + ' ' + esc(ex) + '</p></div><div class="minis">' + btns + '</div>'; }
-function recBox(key, again){ return '<div class="rec" data-key="' + key + '">' + (again ? '<div class="lab">다시 녹음</div>' : '') + '<p class="micwhy">' + I.mic + '<span>녹음할 때만 마이크를 써요. 녹음은 이 기기에만 저장되고 어디에도 올라가지 않아요.</span></p><button class="ybtn" data-act="rec" data-key="' + key + '" data-label="' + (again ? '다시 녹음하기' : '녹음하기') + '">' + I.mic + '<span class="rl">' + (again ? '다시 녹음하기' : '녹음하기') + '</span></button><div class="recmsg" hidden></div></div>'; }
+function recBox(key, again){ return '<div class="rec" data-key="' + key + '">' + (again ? '<div class="lab">다시 녹음</div>' : '') + '<p class="micwhy">' + I.mic + '<span>녹음할 때만 마이크를 써요. ' + (syncCfg ? '녹음은 이 기기와, 연동한 내 비공개 GitHub 저장소에만 저장돼요.' : '녹음은 이 기기에만 저장되고 어디에도 올라가지 않아요.') + '</span></p><button class="ybtn" data-act="rec" data-key="' + key + '" data-label="' + (again ? '다시 녹음하기' : '녹음하기') + '">' + I.mic + '<span class="rl">' + (again ? '다시 녹음하기' : '녹음하기') + '</span></button><div class="recmsg" hidden></div></div>'; }
 const mine = (key, a, b, empty) => '<div class="mine" data-key="' + key + '" data-st="' + S[a].t[0] + '" data-en="' + S[b].t[1] + '"' + (empty ? ' data-empty="1"' : '') + '></div>';
 function checks(id, list){ const c = pr(id).checks || []; return list.map((x, i) => '<label class="ck' + (c[i] ? ' c' : '') + '"><input type="checkbox" data-ck="' + id + '" data-i="' + i + '"' + (c[i] ? ' checked' : '') + '><span>' + esc(x) + '</span></label>').join(''); }
 
@@ -313,8 +317,8 @@ function checks(id, list){ const c = pr(id).checks || []; return list.map((x, i)
 function vHome(){ const done = P.filter(p => prog[p.id] && prog[p.id].done).length, next = P.find(p => !(prog[p.id] && prog[p.id].done)), L1 = S.length - 1;
  const card = p => { const g = prog[p.id], d = g && g.done, st = g && g.step > 1 && !d, [a, b] = p.segs; return '<button class="pc' + (d ? ' done' : '') + (next === p ? ' nx' : '') + '" data-act="go" data-to="' + p.id + '-' + (d ? 1 : (g && g.step) || 1) + '"><span class="lt">' + p.key + '</span><span class="pb"><span class="pt">' + esc(p.title) + '</span><span class="pd" style="display:block">' + esc(segText(a) + (b > a ? ' ' + segText(a + 1) : '')) + '</span><span class="meta" style="display:block">약 ' + nWords(a, b) + '단어 · ' + durTxt(a, b) + '</span></span><span class="chip' + (d ? ' y' : '') + '">' + (d ? '완료' : st ? g.step + '/4 진행 중' : '시작 전') + '</span></button>'; };
  const nIdi = P.reduce((n, p) => n + p.idi.length, 0), dd = dday();
- return hdr({home: 1, ov: esc([L.place, L.when ? L.when.split(' · ')[0] : ''].filter(Boolean).join(' · ')), tt: esc(L.title.split(' – ')[0]), sb: esc([L.when && L.when.split(' · ')[1], L.purpose, L.level].filter(Boolean).join(' · '))}) + '<main class="wrap"><section class="hero"><h1>' + esc(L.h1) + (L.h1b ? '<span class="h1b">' + esc(L.h1b) + '</span>' : '') + '</h1><p class="lead">단락마다 모범 표시 → 덩어리 따라 하기 → 녹음하고 비교 → 스스로 확인, 네 단계로 연습해요.</p><div class="stat">' + (dd ? '<div class="dd">' + dd + '</div>' : '') + '<div class="sx"><b>' + done + ' / ' + P.length + ' 단락 완료</b><div class="sbar" style="--n:' + P.length + '">' + P.map(p => '<i class="' + (prog[p.id] && prog[p.id].done ? 'd' : '') + '"></i>').join('') + '</div></div></div></section><h3 class="sec">단락 연습</h3>' + P.map(card).join('') + '<h3 class="sec">한 번에</h3><button class="pc" data-act="go" data-to="full"><span class="lt">' + I.wave + '</span><span class="pb"><span class="pt">전체 리허설</span><span class="pd" style="display:block">처음부터 끝까지 듣고, 녹음하고, 비교하기</span><span class="meta" style="display:block">약 ' + nWords(0, L1) + '단어 · ' + durTxt(0, L1) + '</span></span></button><button class="pc" data-act="go" data-to="expr"><span class="lt">' + I.book + '</span><span class="pb"><span class="pt">표현 모아 보기</span><span class="pd" style="display:block">관용구 · 자주 같이 쓰는 말 · 분리 동사 · 쓸모 있는 문장</span><span class="meta" style="display:block">' + nIdi + '개</span></span></button>' + (L.tips && L.tips.length ? '<details class="tips"><summary>' + (L.purpose === '발표' ? '발표 팁' : '팁') + '</summary><ul>' + L.tips.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></details>' : '') + '<p class="foot">' + (INDEX_URL ? '<a href="' + INDEX_URL + '">내 연습 목록</a> · ' : '') + '모범 음성: ElevenLabs “' + esc(L.voice) + '”. MP3 변환: LAME (lame.sourceforge.net, LGPL).<br>진행 상황과 녹음은 이 브라우저에만 저장돼요. 다른 브라우저로 열면 처음부터 시작해요.</p></main>' + cta('', next ? '이어서 하기 · 단락 ' + next.key : '전체 리허설', next ? next.id + '-' + (pr(next.id).step || 1) : 'full'); }
-function vStep(p, n){ const g = pr(p.id); g.step = n; saveProg(); const [a, b] = p.segs;
+ return hdr({home: 1, ov: esc([L.place, L.when ? L.when.split(' · ')[0] : ''].filter(Boolean).join(' · ')), tt: esc(L.title.split(' – ')[0]), sb: esc([L.when && L.when.split(' · ')[1], L.purpose, L.level].filter(Boolean).join(' · '))}) + '<main class="wrap"><section class="hero"><h1>' + esc(L.h1) + (L.h1b ? '<span class="h1b">' + esc(L.h1b) + '</span>' : '') + '</h1><p class="lead">단락마다 모범 표시 → 덩어리 따라 하기 → 녹음하고 비교 → 스스로 확인, 네 단계로 연습해요.</p><div class="stat">' + (dd ? '<div class="dd">' + dd + '</div>' : '') + '<div class="sx"><b>' + done + ' / ' + P.length + ' 단락 완료</b><div class="sbar" style="--n:' + P.length + '">' + P.map(p => '<i class="' + (prog[p.id] && prog[p.id].done ? 'd' : '') + '"></i>').join('') + '</div></div></div></section><h3 class="sec">단락 연습</h3>' + P.map(card).join('') + '<h3 class="sec">한 번에</h3><button class="pc" data-act="go" data-to="full"><span class="lt">' + I.wave + '</span><span class="pb"><span class="pt">전체 리허설</span><span class="pd" style="display:block">처음부터 끝까지 듣고, 녹음하고, 비교하기</span><span class="meta" style="display:block">약 ' + nWords(0, L1) + '단어 · ' + durTxt(0, L1) + '</span></span></button><button class="pc" data-act="go" data-to="expr"><span class="lt">' + I.book + '</span><span class="pb"><span class="pt">표현 모아 보기</span><span class="pd" style="display:block">관용구 · 자주 같이 쓰는 말 · 분리 동사 · 쓸모 있는 문장</span><span class="meta" style="display:block">' + nIdi + '개</span></span></button><button class="pc" data-act="go" data-to="sync"><span class="lt">' + I.cloud + '</span><span class="pb"><span class="pt">기기 연동</span><span class="pd" style="display:block">아이폰 · 아이패드 · 맥에서 진행 상황과 녹음 맞추기</span><span class="meta syncst" style="display:block">' + syncTxt() + '</span></span></button>' + (L.tips && L.tips.length ? '<details class="tips"><summary>' + (L.purpose === '발표' ? '발표 팁' : '팁') + '</summary><ul>' + L.tips.map(t => '<li>' + esc(t) + '</li>').join('') + '</ul></details>' : '') + '<p class="foot">' + (INDEX_URL ? '<a href="' + INDEX_URL + '">내 연습 목록</a> · ' : '') + '모범 음성: ElevenLabs “' + esc(L.voice) + '”. MP3 변환: LAME (lame.sourceforge.net, LGPL).<br>' + (syncCfg ? '진행 상황과 녹음은 이 기기에 저장되고, 연동한 비공개 저장소를 통해 다른 기기와 맞춰져요.' : '진행 상황과 녹음은 이 브라우저에만 저장돼요. 다른 기기와 맞추려면 ‘기기 연동’을 켜세요.') + '</p></main>' + cta('', next ? '이어서 하기 · 단락 ' + next.key : '전체 리허설', next ? next.id + '-' + (pr(next.id).step || 1) : 'full'); }
+function vStep(p, n){ const g = pr(p.id); if (g.step !== n) { g.step = n; saveProg(p.id); } const [a, b] = p.segs;
  const h = hdr({ov: ovTxt(), tt: esc(L.h1) + ' · 단락 연습', sb: '단락 ' + p.key + ' · ' + esc(p.title), step: n, lab: '단락 ' + p.key + ' · ' + STEPS[n - 1]});
  const kick = '<div class="kick">단락 ' + p.key + ' · ' + esc(p.title) + ' (약 ' + nWords(a, b) + '단어)</div>';
  let body = '', c = '';
@@ -330,13 +334,18 @@ function vStep(p, n){ const g = pr(p.id); g.step = n; saveProg(); const [a, b] =
  return h + '<main class="wrap">' + kick + body + '</main>' + c; }
 function vFull(){ const L1 = S.length - 1;
  return hdr({ov: ovTxt(), tt: '전체 리허설', sb: '처음부터 끝까지 · ' + durTxt(0, L1)}) + '<main class="wrap"><div class="kick">' + esc(L.title) + ' (약 ' + nWords(0, L1) + '단어)</div><h1>전체 리허설</h1><p class="lead">발표하듯 처음부터 끝까지. 들을 때는 지금 읽는 문장이 표시돼요.</p>' + pills('full', 0, L1, true) + ipaRow() + P.map(p => '<p class="' + annCls() + '"><span class="pn">' + p.key + '</span>' + ann(p.segs[0], p.segs[1]) + '</p>').join('') + '<div class="lab2">내 녹음</div>' + mine('full', 0, L1, true) + recBox('full', false) + '<h3 class="sec">리허설 체크</h3>' + checks('full', L.fullChecks || []) + '</main>' + cta('home', '처음 화면으로', 'home'); }
+function vSync(){ const c = syncCfg;
+ return hdr({ov: ovTxt(), tt: '기기 연동', sb: '진행 상황과 녹음 맞추기'}) + '<main class="wrap"><h1 style="margin-top:22px">기기 연동</h1><p class="lead">아이폰 · 아이패드 · 맥에서 진행 상황과 녹음을 맞춰요. 내 GitHub <b>비공개</b> 저장소에 저장되고, 접근 키는 이 기기의 브라우저에만 보관돼요. 키가 없거나 인터넷이 끊겨도 앱은 이 기기 안에서 그대로 돌아가요.</p><div class="stat"><div class="lt">' + I.cloud + '</div><div class="sx"><b class="syncst">' + syncTxt() + '</b>' + (c ? '<div class="meta">' + esc(c.repo) + ' · 키 …' + esc(c.token.slice(-4)) + '</div>' : '') + '</div></div>'
+ + (c ? '<div class="pills" style="margin-top:16px"><button class="pill" data-act="syncnow">지금 맞추기</button><button class="pill" data-act="syncoff">이 기기 연결 끊기</button></div>' : '')
+ + '<h3 class="sec">' + (c ? '다시 연결하기' : '연결하기') + '</h3><div class="syform"><label>저장소 (계정/이름)<input id="syrepo" value="' + esc(c ? c.repo : 'korean-with-taejeong/deutsch-sync') + '" autocapitalize="off" autocorrect="off" spellcheck="false"></label><label>접근 키<input id="sytok" type="password" placeholder="github_pat_…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"></label><button class="ybtn" data-act="syncsave">연결하기</button><p class="recmsg" id="symsg" hidden></p></div>'
+ + '<details class="tips"' + (c ? '' : ' open') + '><summary>처음 한 번: 저장소와 키 만들기</summary><ol class="steps"><li><a href="https://github.com/new" target="_blank" rel="noopener">github.com/new</a>에서 Repository name <b>deutsch-sync</b>, <b>Private</b> 선택, <b>Add a README</b> 켜고 <b>Create repository</b>.</li><li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>에서 Token name <b>deutsch-sync</b>, Expiration은 원하는 기간(예: 1년), Repository access는 <b>Only select repositories</b> → <b>deutsch-sync</b>, Permissions → Repository permissions → <b>Contents: Read and write</b> → <b>Generate token</b>.</li><li>나온 키(github_pat_…로 시작, 이때 한 번만 보여요)를 복사해서 위에 붙여 넣고 <b>연결하기</b>.</li><li>아이폰 · 아이패드에서도 이 화면(첫 화면 → 기기 연동)을 열고 같은 키를 붙여 넣으세요. 맥에서 복사하면 같은 Apple 계정의 아이폰 · 아이패드에서 바로 붙여넣기가 돼요. 키는 메모나 메신저에 남기지 마세요.</li></ol></details><p class="foot">공개 저장소는 연결하지 않아요(녹음이 누구에게나 보이기 때문에). 저장소에는 연습마다 진행 상황 파일 하나와 단락별 최신 녹음이 저장돼요.</p></main>' + cta('home', '처음 화면으로', 'home'); }
 function vExpr(){ return hdr({ov: ovTxt(), tt: '표현 모아 보기', sb: '단락별로 모아 보기'}) + '<main class="wrap"><h1 style="margin-top:22px">표현 모아 보기</h1><p class="lead">뜻, 직역, 쓰는 상황, 격식까지. ▶을 누르면 발표 속 그 문장을 모범 음성으로 들려줘요.</p>' + P.map(p => '<h3 class="sec"><span class="pn">' + p.key + '</span>' + esc(p.title) + '</h3>' + p.idi.map(idCard).join('')).join('') + '</main>' + cta('home', '처음 화면으로', 'home'); }
 
 /* ---------------- router ---------------- */
 let toastMsg = '';
 function render(){ stop(); if (mr) try { mr.stop(); } catch (e) {}
  const h = (location.hash || '').slice(1), m = h.match(/^([a-z])-([1-4])$/), p = m && P.find(x => x.id === m[1]); let html;
- if (p) html = vStep(p, +m[2]); else if (h === 'full') html = vFull(); else if (h === 'expr') html = vExpr(); else html = vHome();
+ if (p) html = vStep(p, +m[2]); else if (h === 'full') html = vFull(); else if (h === 'expr') html = vExpr(); else if (h === 'sync') html = vSync(); else html = vHome();
  app.innerHTML = html; window.scrollTo(0, 0); nowI = -2; paint(); fillMine();
  if (toastMsg) { toast(toastMsg); toastMsg = ''; } }
 function toast(m){ for (const o of document.querySelectorAll('.toast')) o.remove(); const d = document.createElement('div'); d.className = 'toast'; d.textContent = m; document.body.appendChild(d); setTimeout(() => d.remove(), 2400); }
@@ -379,8 +388,67 @@ async function recToggle(key){ if (mr) { try { mr.stop(); } catch (e) {} return;
   const raw = new Blob(parts, {type: type.split(';')[0]});
   if (/mp4|aac/.test(type) && !/opus/.test(type)) { await saveRec(key, raw, 'audio/mp4', 'm4a'); recMsg(key, ''); }
   else { recMsg(key, '파일 준비 중…', true); try { const mp3 = await toMp3(raw); await saveRec(key, mp3, 'audio/mpeg', 'mp3'); recMsg(key, ''); } catch (e) { await saveRec(key, raw, raw.type || 'audio/webm', /ogg/.test(type) ? 'ogg' : 'webm'); recMsg(key, 'mp3로 바꾸지 못해서 이 브라우저 형식으로 저장했어요. 일부 기기에서는 재생이 안 될 수 있어요.', true); } }
-  fillMine(); };
+  fillMine(); syncSoon(800); };
  rec.start(); mrT = Date.now(); mrIv = setInterval(recUI, 250); recUI(); }
+
+/* ---------------- sync between devices (optional): a private GitHub repo ----------------
+   Everything is saved on this device first. When a repo and key are set, sync/<id>.json holds the progress
+   and the list of recordings; sync/<id>/<part>-<time>.<ext> holds the newest recording per part.
+   Newer wins per part; "done" stays done. The key stays in this browser only. */
+let syncCfg = LS.get('sync', null);
+const SYNC = {busy: false, again: false, last: LS.get('syncLast:' + L.id, 0), err: '', timer: 0};
+const META = () => 'sync/' + L.id + '.json';
+function syncTxt(){ if (!syncCfg) return '연동 안 함'; if (SYNC.busy) return '맞추는 중…'; if (SYNC.err) return '⚠ ' + SYNC.err; if (!SYNC.last) return '연동됨 · 아직 맞추기 전'; const d = new Date(SYNC.last); return '연동됨 · ' + (d.getMonth() + 1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0') + ' 맞춤'; }
+function syncUI(){ for (const e of document.querySelectorAll('.syncst')) e.textContent = syncTxt(); }
+function syncSoon(ms){ if (!syncCfg) return; clearTimeout(SYNC.timer); SYNC.timer = setTimeout(() => syncNow(), ms || 4000); }
+async function gh(path, o, cfg){ o = o || {}; cfg = cfg || syncCfg; const bust = o.method ? '' : (path.includes('?') ? '&' : '?') + '_=' + Date.now();
+ return fetch('https://api.github.com/repos/' + cfg.repo + path + bust, {method: o.method || 'GET', headers: Object.assign({'Authorization': 'Bearer ' + cfg.token, 'Accept': o.raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28'}, o.body ? {'Content-Type': 'application/json'} : {}), body: o.body ? JSON.stringify(o.body) : undefined}); }
+function httpErr(r){ const e = new Error('http ' + r.status); e.status = r.status; return e; }
+const blobB64 = b => new Promise((res, rej) => { const f = new FileReader(); f.onload = () => res(String(f.result).split(',')[1] || ''); f.onerror = () => rej(f.error); f.readAsDataURL(b); });
+const b64str = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, '')), c => c.charCodeAt(0)));
+async function getMeta(){ const r = await gh('/contents/' + META()); if (r.status === 404) return {data: {}, sha: null}; if (!r.ok) throw httpErr(r); const j = await r.json(); return {data: JSON.parse(b64str(j.content || '') || '{}'), sha: j.sha}; }
+async function putFile(path, b64, sha, msg){ let r = await gh('/contents/' + path, {method: 'PUT', body: Object.assign({message: msg, content: b64}, sha ? {sha} : {})});
+ if (r.status === 422 && !sha) { const g = await gh('/contents/' + path); if (g.ok) { const s = (await g.json()).sha; r = await gh('/contents/' + path, {method: 'PUT', body: {message: msg, content: b64, sha: s}}); } }
+ if (!r.ok) throw httpErr(r); return (await r.json()).content.sha; }
+async function delFile(path, sha){ try { await gh('/contents/' + path, {method: 'DELETE', body: {message: 'remove older recording', sha}}); } catch (e) {} }
+async function localRecKeys(){ const db = await idb.open(); if (!db) return []; return new Promise(res => { try { const q = db.transaction('r').objectStore('r').getAllKeys(); q.onsuccess = () => res((q.result || []).map(String).filter(k => k.startsWith(L.id + ':')).map(k => k.slice(L.id.length + 1))); q.onerror = () => res([]); } catch (e) { res([]); } }); }
+function mergeProg(remote){ let local = false, up = false; for (const id of new Set([...Object.keys(prog), ...Object.keys(remote)])) { const a = prog[id], b = remote[id];
+  if (!b) { up = true; continue; } if (!a) { prog[id] = b; local = true; continue; }
+  const nw = (b.u || 0) > (a.u || 0) ? b : a, m = {step: nw.step || 1, done: !!(a.done || b.done), checks: nw.checks || [], u: Math.max(a.u || 0, b.u || 0)};
+  if (JSON.stringify(m) !== JSON.stringify(a)) { prog[id] = m; local = true; } if (JSON.stringify(m) !== JSON.stringify(b)) up = true; }
+ if (local) LS.set(PK, prog); return {local, up}; }
+async function syncNow(){ if (!syncCfg) return; if (SYNC.busy) { SYNC.again = true; return; } clearTimeout(SYNC.timer); SYNC.busy = true; SYNC.err = ''; syncUI(); let got = 0;
+ try {
+  for (let attempt = 0; attempt < 3; attempt++) {
+   const {data, sha} = await getMeta(); data.prog = data.prog || {}; data.recs = data.recs || {};
+   const pm = mergeProg(data.prog); if (pm.local) got++; let changed = pm.up; data.prog = JSON.parse(JSON.stringify(prog));
+   const older = [];
+   for (const key of new Set([...(await localRecKeys()), ...Object.keys(data.recs)])) { const R = data.recs[key], Lr = await idb.get(rk(key));
+    if (R && (!Lr || R.t > Lr.t)) { const r = await gh('/contents/' + R.path, {raw: true}); if (!r.ok) throw httpErr(r); const b = await r.blob(); await saveRec(key, new Blob([b], {type: R.type}), R.type, R.ext, R.t); got++; }
+    else if (Lr && Lr.blob && (!R || Lr.t > R.t)) { const path = 'sync/' + L.id + '/' + key + '-' + Lr.t + '.' + Lr.ext; const s = await putFile(path, await blobB64(Lr.blob), null, 'recording ' + L.id + ' ' + key); if (R && R.path !== path) older.push(R); data.recs[key] = {t: Lr.t, ext: Lr.ext, type: Lr.type, path, sha: s}; changed = true; } }
+   if (changed) { data.v = 1; data.set = L.id; data.updated = Date.now();
+    try { await putFile(META(), await blobB64(new Blob([JSON.stringify(data, null, 1)])), sha, 'sync ' + L.id); } catch (e) { if ((e.status === 409 || e.status === 422) && attempt < 2) continue; throw e; } }
+   for (const o of older) delFile(o.path, o.sha);
+   break; }
+  SYNC.last = Date.now(); LS.set('syncLast:' + L.id, SYNC.last);
+ } catch (e) { SYNC.err = e.status === 401 ? '키가 맞지 않거나 만료됐어요' : e.status === 403 ? '키에 Contents 쓰기 권한이 없어요' : e.status === 404 ? '저장소를 찾을 수 없어요 (이름·키의 저장소 선택 확인)' : '연결이 안 돼요 (인터넷 확인)'; }
+ SYNC.busy = false; syncUI();
+ if (got) { const playing = [...app.querySelectorAll('.mine audio')].some(m => !m.paused); if (!job && !mr && !seq && !playing && location.hash !== '#sync') { const y = scrollY; render(); scrollTo(0, y); } toast('다른 기기와 맞췄어요'); }
+ if (SYNC.again) { SYNC.again = false; syncNow(); } }
+async function syncConnect(){ const repo = (document.getElementById('syrepo').value || '').trim().replace(/^https?:\/\/github\.com\//, '').replace(/\/$/, ''), token = (document.getElementById('sytok').value || '').trim(), msg = document.getElementById('symsg');
+ const say = (t, info) => { msg.hidden = false; msg.textContent = t; msg.classList.toggle('info', !!info); };
+ if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) return say('저장소는 ‘계정/이름’ 모양으로 적어 주세요. 예: korean-with-taejeong/deutsch-sync');
+ if (!token) return say('접근 키를 붙여 넣어 주세요.');
+ say('확인 중…', true); let r;
+ try { r = await gh('', {}, {repo, token}); } catch (e) { return say('연결이 안 돼요. 인터넷 연결을 확인해 주세요.'); }
+ if (r.status === 401) return say('키가 맞지 않거나 만료됐어요. 키를 다시 복사해 붙여 넣어 주세요.');
+ if (r.status === 404 || r.status === 403) return say('저장소를 찾을 수 없어요. 이름이 맞는지, 키를 만들 때 이 저장소를 골랐는지 확인해 주세요.');
+ if (!r.ok) return say('GitHub 응답 오류(' + r.status + '). 잠시 뒤 다시 해 주세요.');
+ const j = await r.json(); if (!j.private) return say('공개 저장소예요. 녹음이 누구에게나 보이니 비공개(Private) 저장소를 써 주세요.');
+ syncCfg = {repo, token}; LS.set('sync', syncCfg); SYNC.last = 0; SYNC.err = ''; await syncNow();
+ if (SYNC.err) { say(SYNC.err); return; } render(); toast('연결했어요. 다른 기기에서도 같은 키를 넣어 주세요.'); }
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && syncCfg && Date.now() - SYNC.last > 15000) syncNow(); });
+window.addEventListener('online', () => { if (syncCfg) syncNow(); });
 
 /* ---------------- events ---------------- */
 app.addEventListener('click', e => {
@@ -405,13 +473,17 @@ app.addEventListener('click', e => {
  if (a === 'save') { doSave(el.dataset.key); return; }
  if (a === 'send') { doSend(el.dataset.key, el); return; }
  if (a === 'sendnow') { shareNow(el.dataset.key, el); return; }
- if (a === 'done') { const id = el.dataset.to, g = pr(id); g.done = true; g.step = 1; saveProg(); const i = P.findIndex(x => x.id === id), nx = P.slice(i + 1).concat(P.slice(0, i)).find(x => !(prog[x.id] && prog[x.id].done)); toastMsg = '단락 ' + P[i].key + ' 완료!' + (nx ? ' 다음은 ' + nx.key : ' 이제 전체 리허설'); location.hash = 'home'; return; }
+ if (a === 'syncsave') { syncConnect(); return; }
+ if (a === 'syncnow') { syncNow(); return; }
+ if (a === 'syncoff') { syncCfg = null; LS.set('sync', null); SYNC.err = ''; toast('이 기기 연결을 끊었어요. 녹음은 이 기기에 남아 있어요.'); render(); return; }
+ if (a === 'done') { const id = el.dataset.to, g = pr(id); g.done = true; g.step = 1; saveProg(id); const i = P.findIndex(x => x.id === id), nx = P.slice(i + 1).concat(P.slice(0, i)).find(x => !(prog[x.id] && prog[x.id].done)); toastMsg = '단락 ' + P[i].key + ' 완료!' + (nx ? ' 다음은 ' + nx.key : ' 이제 전체 리허설'); location.hash = 'home'; return; }
 });
-app.addEventListener('change', e => { const x = e.target; if (x.matches('input[type=checkbox][data-ck]')) { const g = pr(x.dataset.ck); g.checks = g.checks || []; g.checks[+x.dataset.i] = x.checked; saveProg(); x.closest('.ck').classList.toggle('c', x.checked); } });
+app.addEventListener('change', e => { const x = e.target; if (x.matches('input[type=checkbox][data-ck]')) { const g = pr(x.dataset.ck); g.checks = g.checks || []; g.checks[+x.dataset.i] = x.checked; saveProg(x.dataset.ck); x.closest('.ck').classList.toggle('c', x.checked); } });
 app.addEventListener('keydown', e => { const c = e.target.closest('.ch'); if (c && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); c.click(); } });
 document.addEventListener('keydown', e => { if (!/^#[a-z]-1$/.test(location.hash) || e.target.closest('input,textarea')) return; if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { const b = app.querySelector('[data-act=item][data-d="' + (e.key === 'ArrowLeft' ? -1 : 1) + '"]'); if (b && !b.disabled) b.click(); } });
 window.addEventListener('hashchange', render);
 render();
+if (syncCfg) syncNow();
 }
 </script>
 </body>
