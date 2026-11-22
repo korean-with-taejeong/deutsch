@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Deutsch · 발음 연습</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2214%22 fill=%22%23F28C28%22/%3E%3Cpath d=%22M16 8v8l5 3%22 stroke=%22%232B1700%22 stroke-width=%223%22 fill=%22none%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#FAF7F2;--bg2:#F2ECE3;--card:#FFFFFF;--line:#E6DCCF;--ink:#2B2420;--hi:#1C1713;--mut:#6B5F56;--dim:#998C81;--y:#F28C28;--yi:#2B1700;--at:#B4560F}
+:root[data-look=night]{color-scheme:dark;--bg:#1F1A16;--bg2:#2A231E;--card:#28211C;--line:#3D342C;--ink:#F1EAE0;--hi:#FFF8EF;--mut:#C0B3A6;--dim:#8F8277;--y:#F5A04A;--yi:#2B1700;--at:#F5A04A}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}
+main{max-width:680px;margin:0 auto;padding:calc(36px + env(safe-area-inset-top)) 20px calc(48px + env(safe-area-inset-bottom))}
+.ov{font-size:12.5px;font-weight:700;color:var(--at)}
+h1{font-size:clamp(28px,6.4vw,36px);line-height:1.15;margin:4px 0 10px;color:var(--hi)}
+.lead{color:var(--mut);margin:0 0 22px}
+.pc{display:flex;gap:16px;align-items:center;padding:16px 18px;background:var(--card);border:1.5px solid var(--line);border-radius:22px;margin-bottom:12px;color:inherit;text-decoration:none}
+.pc.nx{border-color:var(--y)}
+.dt{width:56px;flex:none;text-align:center;border-radius:14px;background:var(--bg2);padding:7px 0;line-height:1.15}
+.dt b{display:block;font-size:20px;color:var(--at)}.dt span{font-size:12px;color:var(--mut)}
+.pb{flex:1}
+.pt{display:block;font-weight:700;font-size:16.5px;color:var(--hi);font-family:"Atkinson Hyperlegible Next","IBM Plex Sans KR",sans-serif}
+.meta{display:block;font-size:13px;color:var(--mut)}
+.chip{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--bg2);color:var(--mut);white-space:nowrap;flex:none}
+.chip.y{background:var(--y);color:var(--yi)}
+.foot{font-size:12.5px;color:var(--dim);margin-top:24px}
+</style>
+</head>
+<body>
+<main>
+<div class="ov">Deutsch · 발음 연습</div>
+<h1>내 연습 목록</h1>
+<p class="lead">원어민 음성을 듣고, 덩어리로 따라 하고, 녹음해서 비교해요. 새 연습이 생기면 여기에 추가돼요.</p>
+<div id="list"></div>
+<p class="foot">녹음과 진행 상황은 각자의 기기에만 저장돼요.</p>
+</main>
+<script>
+const SETS=[{"id": "2026-11-24-erwartungsworkshop", "title": "Erwartungsworkshop – Vorstellung", "h1": "자기소개", "purpose": "발표", "date": "2026-11-24", "place": "Swatch Group", "level": "B2"}];
+try{if(localStorage.getItem('de:look')==='"night"')document.documentElement.dataset.look='night'}catch(e){}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const today=new Date();const t0=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+const dd=s=>{if(!s)return null;const [y,m,d]=s.split('-').map(Number);return Math.round((new Date(y,m-1,d)-t0)/864e5)};
+let nextShown=false;
+document.getElementById('list').innerHTML=SETS.map(s=>{const n=dd(s.date),[y,m,d]=(s.date||'--').split('-');
+ const chip=n==null?'':n>0?'D-'+n:n===0?'D-day':'끝';const up=n!=null&&n>=0;
+ return '<a class="pc'+(up?' nx':'')+'" href="sets/'+encodeURIComponent(s.id)+'.html"><span class="dt"><b>'+esc(+d||'')+'</b><span>'+esc(m?(+m)+'월':'')+'</span></span><span class="pb"><span class="pt">'+esc(s.title)+'</span><span class="meta">'+esc([s.h1,s.purpose,s.place,s.level].filter(Boolean).join(' · '))+'</span><span class="meta">'+esc(s.date)+'</span></span>'+(chip?'<span class="chip'+(up?' y':'')+'">'+chip+'</span>':'')+'</a>'}).join('')||'<p class="lead">아직 연습이 없어요.</p>';
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+{
+ "id": "2026-11-24-erwartungsworkshop",
+ "title": "Erwartungsworkshop – Vorstellung",
+ "short": "Erwartungsworkshop",
+ "h1": "자기소개",
+ "h1b": "표현 익히며 발음까지",
+ "purpose": "발표",
+ "date": "2026-11-24",
+ "when": "24.11. · 09:00–16:30",
+ "place": "Swatch Group",
+ "level": "B2",
+ "voice": {"name": "Leon", "id": "KJGvwDt0zADAAvDmMQEN", "model": "eleven_v4", "stability": 0.69, "similarity": 0.75},
+ "audio": "audio/2026-11-24-erwartungsworkshop.mp3",
+ "gap": 0.75,
+ "paras": [
+  {
+   "id": "a", "key": "A", "title": "인사 · 지금까지의 길",
+   "segs": [
+    ["Grüß[ɡʁyːs] {Gott} zu{sam}men,[tsuˈzamən]", "↘"],
+    ["ich bin {Tae}jeong,", "↘"],
+    ["{neun}undzwanzig[ˈnɔɪnʊntˌtsvantsɪç] Jahre alt, und komme aus {Süd}korea.[ˈzyːtkoˌʁeːa]", "↘"],
+    ["In Korea habe ich {Grund}schullehramt[ˈɡʁʊntʃuːlˌleːɐʔamt] studiert[ʃtuˈdiːɐt] und ein Jahr als Ver{tre}tungslehrkraft[fɛɐˈtʁeːtʊŋsˌleːɐkʁaft] gearbeitet.", "↘"],
+    ["{Frü}her[ˈfʁyːɐ] stand ich also vor der {Klas}se,", "→"],
+    ["{heu}te sitze ich wieder {drin}.", "↘"],
+    ["{Jetzt} hat sich der Spieß[ʃpiːs] {um}gedreht.[ˈʊmɡəˌdʁeːt]", "↘", "laugh"],
+    ["Während des {Stu}diums[ˈʃtuːdiʊms] habe ich neben{bei} ein kleines Unter{neh}men[ʊntɐˈneːmən] gegründet.[ɡəˈɡʁʏndət]", "↘"],
+    ["{Ehr}lich[ˈeːɐlɪç] gesagt:", "→"],
+    ["Das ging {ziem}lich[ˈtsiːmlɪç] in die {Ho}se.[ˈhoːzə]", "↘", "laugh"],
+    ["{A}ber ich habe dabei mit {La}sermaschinen[ˈleːzɐmaˌʃiːnən] und CA{D}[tseːʔaːˈdeː] gearbeitet", "→"],
+    ["und gemerkt, dass ich Dinge mit meinen {ei}genen {Hän}den[ˈhɛndn̩] herstellen[ˈheːɐʃtɛlən] möchte.[ˈmœçtə]", "↘"]
+   ],
+   "chunks": [[0, 1], [2], [3], [4], [5], [6], [7], [8, 9], [10], [11]],
+   "tr": "안녕하세요, 여러분. 저는 태정이고 29살, 한국에서 왔습니다. 한국에서 초등교육을 전공했고 1년 동안 기간제 교사로 일했습니다. 예전엔 교실 앞에 서 있었는데, 오늘은 다시 교실 안에 앉아 있네요. 입장이 완전히 바뀌었습니다. 대학 시절 틈틈이 작은 회사를 창업했습니다. 솔직히 말하면, 꽤 크게 망했어요. 하지만 그때 레이저 기계와 CAD로 작업하면서, 제 손으로 직접 무언가를 만들고 싶다는 걸 깨달았습니다.",
+   "items": [
+    ["강세", 0, "Gott", "Grüß Gott은 Gott에 힘을 줘요. 음성도 Grüß Gott을 높게 이어 말하고 zusammen에서 쭉 내려가요."],
+    ["발음", 0, "Grüß", "ü는 혀는 ‘이’ 자리, 입술은 ‘우’처럼 동그랗게 해서 길게 [yː]. Gr 사이에 ‘으’를 넣지 말고 한 번에 붙여요."],
+    ["발음", 0, "zusammen", "z는 [ts] ‘츠’, 모음 앞 s는 성대를 울리는 [z]: 츠자멘. 강세는 sam."],
+    ["강세", 1, "Taejeong", "이름은 새 정보라 Tae에서 높게 시작해 jeong에서 내려요. 또박또박, 서두르지 않게."],
+    ["강세", 2, "neunundzwanzig", "29는 neun-und-zwanzig. 일의 자리(9)를 먼저 말하고 첫 부분 neun에 강세. eu는 [ɔɪ] ‘오이’."],
+    ["발음", 2, "Südkorea", "모음 앞 S는 [z], 음절 끝 d는 [t]: 쥐트코레아. 음절 끝의 b·d·g는 p·t·k로 소리 나요."],
+    ["강세", 3, "Grundschullehramt", "긴 복합어는 첫 요소에 강세: GRUND-schul-lehr-amt. 나머지는 힘을 빼고 빠르게."],
+    ["발음", 3, "studiert", "단어 첫머리 st는 [ʃt] ‘슈트’. -ieren 동사는 늘 -ier에 강세: stu-DIERT."],
+    ["강세", 3, "Vertretungslehrkraft", "ver-TRE-tungs-…. 앞의 ver-는 약하게 [fɛɐ] 흘리고, V는 [f]로 내요."],
+    ["강세", 4, "Früher", "Früher(예전엔)는 다음 문장의 heute(오늘은)와 짝. 둘 다 힘을 줘야 대조가 들려요."],
+    ["억양", 4, "@t", "Klasse에서 내리지 않고 끝을 올려요 →. 음성도 여기서 올라가며 heute로 이어져요."],
+    ["강세", 5, "drin", "vor der Klasse(교실 앞) ↔ drin(교실 안) 말장난. heute는 낮게 시작해 올리고, drin에서 높게 찍고 확 내려요."],
+    ["강세", 6, "umgedreht", "umdrehen은 분리 동사라 접두사 um에 강세: UM-ge-dreht. 음성은 Jetzt와 um 두 곳만 올라가요."],
+    ["발음", 6, "Spieß", "단어 첫머리 Sp는 [ʃp] ‘슈프’. ie는 긴 [iː], ß는 [s]: 슈피-스."],
+    ["쉼", 6, "@l", "관용구 뒤 웃음 쉼. 음성은 0.7초쯤 쉬지만, 발표에서는 1초쯤 멈추고 청중 반응을 기다려요."],
+    ["강세", 7, "Unternehmen", "Unternehmen은 un-ter-NEH-men. 첫 음절이 아니라 셋째 음절에 강세!"],
+    ["쉼", 8, "@p", "Ehrlich gesagt: 를 평평하게 끌고 짧게 쉬어요. 그래야 다음 문장이 펀치라인처럼 들려요."],
+    ["강세", 9, "ziemlich", "음성은 ziemlich를 가장 높게 찍고 in die Hose까지 계단처럼 내려가요. z는 [ts]."],
+    ["쉼", 9, "@l", "Das ging in die Hose 뒤 웃음 쉼. 실패담은 웃으며 가볍게."],
+    ["강세", 10, "Aber", "Aber로 반전. 음성에서 이 문장의 첫마디가 가장 높아요."],
+    ["발음", 10, "CAD", "약어는 독일어 알파벳으로 읽어요: C [tseː] – A [aː] – D [deː]. 강세는 마지막 글자 D. 음성도 ‘체-아-데’예요."],
+    ["억양", 10, "@t", "gearbeitet에서 끝을 올리고 쉬지 않고 바로 und gemerkt로 이어요 →."],
+    ["강세", 11, "eigenen", "mit meinen EIgenen HÄNden — ‘내 손으로 직접’이 이 단락의 결론이에요."],
+    ["발음", 11, "möchte", "ö는 ‘에’ 혀 자리에 입술을 동그랗게. ch는 ‘히’ 같은 바람 소리 [ç]: 뫼히테."]
+   ],
+   "why": [
+    ["Grüß Gott zusammen", "남부식 인사로 밝게 시작해 zusammen에서 내려요. 첫인상이 정해지는 순간."],
+    ["Früher … heute …", "대조 구조. Klasse에서 올려 이어 가고, drin에서 내려 닫아요."],
+    ["Ehrlich gesagt: …", "평평하게 짧게 쉬어 기대를 만든 뒤 Das ging ziemlich in die Hose로 웃음."],
+    ["Aber ich habe dabei …", "Aber로 반전. 톤을 다시 올려 긍정적인 결론(mit meinen eigenen Händen)으로 가요."]
+   ],
+   "idi": [
+    {"de": "Grüß Gott", "tag": "인사", "ko": "안녕하세요 (남부 독일·오스트리아식)", "lit": "신께서 (당신에게) 인사하시길", "use": "바이에른·바덴뷔르템베르크에서 흔한 인사. 외국인이 쓰면 반응이 좋아요.", "reg": "중립", "s": 0},
+    {"de": "Der Spieß hat sich umgedreht", "tag": "관용구", "ko": "입장이 뒤바뀌었다", "lit": "꼬챙이가 반대로 돌아갔다", "use": "가르치던 사람이 배우는 쪽이 된 지금 상황에 딱 맞아요.", "reg": "비격식 · 농담", "s": 6},
+    {"de": "sich umdrehen", "tag": "분리 동사", "ko": "돌아서다, 뒤집히다", "lit": "빙 돌다", "use": "현재형은 Der Spieß dreht sich um, 완료형은 hat sich umgedreht. 접두사 um에 강세.", "reg": "중립", "s": 6},
+    {"de": "Ehrlich gesagt", "tag": "자주 같이 쓰는 말", "ko": "솔직히 말하면", "lit": "정직하게 말해서", "use": "고백이나 반전 앞에 써요. 뒤에 살짝 쉬면 효과가 커요.", "reg": "중립", "s": 8},
+    {"de": "Das ging in die Hose", "tag": "관용구", "ko": "완전히 망했다", "lit": "그건 바지 속으로 들어갔다", "use": "실패담을 가볍게 말할 때. ziemlich(꽤)를 넣으면 더 자연스러워요.", "reg": "구어 · 비격식", "s": 9},
+    {"de": "Dinge herstellen", "tag": "분리 동사", "ko": "물건을 만들다, 제작하다", "lit": "이리로 세우다", "use": "Ich stelle Uhren her. 직업 이야기에 자주 나와요. 접두사 her에 강세.", "reg": "중립", "s": 11}
+   ],
+   "checks": [
+    "Grüß Gott에서 Gott에 힘이 실리고 zusammen에서 내려갔다",
+    "Früher ↔ heute, vor der Klasse ↔ drin 대조가 강세로 들린다",
+    "Ehrlich gesagt: 를 평평하게 끌고 짧게 쉰 뒤 Das ging ziemlich in die Hose로 넘어갔다",
+    "Unternehmen을 un-ter-NEH-men으로, Spieß·studiert의 Sp/St를 ‘슈프/슈트’로 냈다"
+   ]
+  },
+  {
+   "id": "b", "key": "B", "title": "시계에 빠진 계기",
+   "segs": [
+    ["Vor {drei} Jahren habe ich in Seoul eine {Pop}-up-Ausstellung[ˈpɔpʔapˌʔaʊsʃtɛlʊŋ] von Breguet[bʁeɡɛ] besucht,", "↘"],
+    ["und da habe ich mich so{fort}[zoˈfɔʁt] für die Uhrmache{rei}[uːɐmaxəˈʁaɪ] begeistert.[bəˈɡaɪstɐt]", "↘"],
+    ["Ich wollte {un}bedingt[ˈʊnbədɪŋt] bei der {Swatch} Group lernen.", "↘"],
+    ["{Lei}der war mein Deutsch damals noch nicht gut ge{nug},[ɡəˈnuːk]", "→"],
+    ["deshalb habe ich zu{erst}[tsuˈʔeːɐst] in {Voll}zeit[ˈfɔltsaɪt] eine {Uhr}macherschule[ˈuːɐmaxɐˌʃuːlə] besucht.", "↘"],
+    ["Meine Familie[faˈmiːliə] dachte wahr{schein}lich,[vaːɐˈʃaɪnlɪç] ich habe nicht mehr alle {Tas}sen im {Schrank}:[ʃʁaŋk]", "↘"],
+    ["mit Ende {zwan}zig[ˈtsvantsɪç] nach {Deutsch}land, | um {Uhr}macher[ˈuːɐmaxɐ] zu werden!", "↘", "laugh"]
+   ],
+   "chunks": [[0], [1], [2], [3], [4], [5], [6]],
+   "tr": "3년 전 서울에서 브레게 팝업 전시를 보러 갔는데, 그때 바로 시계 제작에 빠져 버렸습니다. 꼭 스와치 그룹에서 배우고 싶었어요. 아쉽게도 당시엔 독일어가 아직 충분하지 않아서, 먼저 시계 학교를 전일제로 다녔습니다. 가족들은 아마 제가 정신이 나갔다고 생각했을 거예요. 20대 후반에 시계공이 되겠다고 독일로 가다니요!",
+   "items": [
+    ["강세", 0, "Pop-up-Ausstellung", "Pop-up-Ausstellung은 POP에 강세. up과 Aus 앞에서 살짝 끊고(성문 폐쇄음) 모음으로 새로 시작해요: 폽 | 압 | 아우스슈텔룽."],
+    ["발음", 0, "Breguet", "프랑스 브랜드라 ‘브레게’. 끝 t는 소리 내지 않아요. 음성은 앞음절 Bre를 조금 더 높게 읽어요."],
+    ["억양", 0, "@t", "쉼표지만 음성은 besucht에서 바닥까지 내려요 ↘. 한 장면을 끝내고 und da …로 새로 시작하는 느낌."],
+    ["강세", 1, "sofort", "sofort는 so-FORT. 뒷음절 강세라 ‘곧바로’ 빠졌다는 느낌이 살아요. 모음 앞 s는 [z]."],
+    ["강세", 1, "Uhrmacherei", "-ei로 끝나는 명사는 ei에 강세: Uhrmache-REI (Bäckerei도 같아요)."],
+    ["발음", 1, "Uhrmacherei", "a 뒤의 ch는 목 안쪽 ‘흐’ [x] (ach 소리). Uhr의 r은 ‘어’처럼 [uːɐ]: 우어마허라이."],
+    ["강세", 2, "unbedingt", "unbedingt(꼭, 무조건)가 감정의 핵심. 음성은 첫음절 UN을 이 단락에서 가장 높게 찍어요."],
+    ["강세", 3, "Leider", "Leider(아쉽게도)로 분위기 전환. 톤을 조금 낮춰서 시작해요."],
+    ["억양", 3, "@t", "genug에서 끝을 살짝 올려 →, deshalb(그래서)로 원인 → 결과를 이어요."],
+    ["발음", 3, "genug", "단어 끝 g는 [k]: 게누-크. ‘게누그’처럼 ‘으’를 붙이지 않아요."],
+    ["발음", 4, "zuerst", "zu와 erst를 이어 붙이지 말고 e 앞에서 살짝 끊어요(성문 폐쇄음): 츠-에어스트."],
+    ["발음", 4, "Vollzeit", "V는 [f], z는 [ts]: 폴차이트. ‘볼자이트’가 되지 않게."],
+    ["강세", 4, "Uhrmacherschule", "Uhrmacherschule도 복합어라 첫 요소 UHR에 강세."],
+    ["강세", 5, "wahrscheinlich", "wahrscheinlich는 wahr-SCHEIN-lich. 첫 음절이 아니에요!"],
+    ["강세", 5, "Tassen", "관용구 nicht mehr alle Tassen im Schrank는 TAS-sen을 높게, SCHRANK에서 내려요."],
+    ["쉼", 5, "@p", "Schrank: 뒤 짧게 쉬고, 가족의 속마음을 대신 말하듯 mit Ende zwanzig …로 넘어가요."],
+    ["발음", 6, "zwanzig", "z는 [ts], w는 [v], 끝 -ig는 [ɪç] ‘이히’: 츠반치히."],
+    ["쉼", 6, "@q", "Deutschland, 뒤에서 음성이 짧게 끊어요. um … zu werden(~하려고)은 목적을 덧붙이는 부분이에요."],
+    ["억양", 6, "@t", "느낌표 문장. Ende · zwanzig · Deutschland · Uhrmacher를 하나하나 높게 찍고 werden에서 확 내려요 ↘."],
+    ["쉼", 6, "@l", "웃음 쉼. 가족 이야기 뒤 1초쯤 기다려요."]
+   ],
+   "why": [
+    ["Vor drei Jahren … besucht,", "이야기의 시작. drei, Pop을 또박또박 찍고 besucht에서 한 번 내려요."],
+    ["unbedingt", "‘꼭’ 하고 싶었던 마음을 UN의 높은 음으로 보여 줘요."],
+    ["Leider …, deshalb …", "원인 → 결과. genug에서 올려 deshalb로 이어 가요."],
+    ["mit Ende zwanzig …!", "가족의 반응을 흉내 내듯 단어마다 높게, 끝은 확 내려요."]
+   ],
+   "idi": [
+    {"de": "sich für etwas begeistern", "tag": "자주 같이 쓰는 말", "ko": "~에 푹 빠지다, 열광하다", "lit": "~에 대해 열정을 품다", "use": "동기를 말할 때: Ich habe mich sofort für … begeistert.", "reg": "중립", "s": 1},
+    {"de": "Ich wollte unbedingt …", "tag": "쓸모 있는 문장", "ko": "꼭 ~하고 싶었어요", "lit": "조건 없이 ~하고 싶었다", "use": "강한 바람이나 동기를 말할 때. 면접에서도 그대로 쓸 수 있어요.", "reg": "중립", "s": 2},
+    {"de": "in Vollzeit", "tag": "자주 같이 쓰는 말", "ko": "전일제로", "lit": "꽉 찬 시간으로", "use": "in Vollzeit / in Teilzeit arbeiten = 전일제 / 시간제로 일하다.", "reg": "중립", "s": 4},
+    {"de": "nicht mehr alle Tassen im Schrank haben", "tag": "관용구", "ko": "제정신이 아니다 (농담)", "lit": "찬장에 컵이 다 있지 않다", "use": "남에게 쓰면 무례할 수 있어요. 이렇게 자기 이야기로 쓰면 안전한 농담.", "reg": "구어 · 농담", "s": 5},
+    {"de": "mit Ende zwanzig", "tag": "자주 같이 쓰는 말", "ko": "20대 후반에", "lit": "스물의 끝자락에", "use": "Anfang / Mitte / Ende zwanzig = 20대 초반 / 중반 / 후반.", "reg": "중립", "s": 6}
+   ],
+   "checks": [
+    "unbedingt의 UN과 Swatch Group에 힘이 들어가 ‘꼭’이라는 마음이 들린다",
+    "sofort, wahrscheinlich의 강세를 뒷부분(FORT, SCHEIN)에 줬다",
+    "Vollzeit의 V를 [f], zwanzig의 z를 [ts], genug의 끝 g를 [k]로 냈다",
+    "mit Ende zwanzig … werden!을 단어마다 높게 찍고 끝에서 확 내렸다"
+   ]
+  },
+  {
+   "id": "c", "key": "C", "title": "감사 · 늦깎이의 각오",
+   "segs": [
+    ["Jetzt bin ich seit {elf} Monaten hier", "→"],
+    ["und darf in die {Aus}bildung[ˈaʊsbɪldʊŋ] wechseln.[ˈvɛksl̩n]", "↘"],
+    ["Dafür möchte ich mich bei {al}len, die das {mög}lich[ˈmøːklɪç] gemacht haben,", "→"],
+    ["ganz {herz}lich[ˈhɛʁtslɪç] bedanken.", "↘"],
+    ["Ich {weiß}, ich bin {spät}[ʃpɛːt] dran.", "↘"],
+    ["Man sagt ja:", "→"],
+    ["„Wer zu {spät} kommt, den bestraft[bəˈʃtʁaːft] das {Le}ben.“", "↘"],
+    ["Ich hoffe, das gilt {nicht} für A{zu}bis.[aˈtsuːbis]", "↘", "laugh"],
+    ["Ich halte mich {lie}ber[ˈliːbɐ] an", "→"],
+    ["„Besser {spät} als {nie}.“", "↘", "laugh"]
+   ],
+   "chunks": [[0, 1], [2], [3], [4], [5, 6], [7], [8, 9]],
+   "tr": "이제 여기 온 지 11개월이 되었고, 정식 직업교육(아우스빌둥)으로 옮길 수 있게 되었습니다. 이걸 가능하게 해 주신 모든 분께 진심으로 감사드립니다. 제가 늦은 거 알아요. ‘늦게 오는 자는 인생이 벌한다’는 말도 있죠. 그게 견습생에게는 해당되지 않기를 바랍니다. 저는 차라리 ‘안 하는 것보다 늦게라도 하는 게 낫다’를 따르겠습니다.",
+   "items": [
+    ["강세", 0, "elf", "숫자 elf(11)가 정보의 핵심. 끝 f까지 확실히."],
+    ["억양", 0, "@t", "hier에서 끝을 올리고 쉬지 않고 und darf …로 이어요 →. 좋은 소식이 남았다는 신호."],
+    ["강세", 1, "Ausbildung", "Ausbildung → AUS-bil-dung. 복합어는 첫 요소에 강세."],
+    ["발음", 1, "wechseln", "w는 [v] (윗니를 아랫입술에), chs는 [ks]: 벡셀른."],
+    ["강세", 2, "möglich", "bei ALlen, die das MÖGlich gemacht haben — 감사의 대상을 분명하게. ö는 길게, g는 [k]: 뫼-클리히."],
+    ["쉼", 2, "@p", "haben, 뒤는 아주 짧게만 쉬고 ganz herzlich bedanken으로 문장을 닫아요. 길게 끊으면 문장이 흩어져요."],
+    ["강세", 3, "herzlich", "herzlich = HERZ-lich. z는 [ts], -lich는 ‘리히’: 헤르츨리히."],
+    ["강세", 4, "spät", "Ich WEIß, ich bin SPÄT dran. sp는 ‘슈프’, ä는 긴 ‘에-’: 슈페-트."],
+    ["억양", 5, "@t", "Man sagt ja: 는 높고 평평하게 →. 이제 인용이 나온다는 예고예요."],
+    ["강세", 6, "Leben", "Wer zu SPÄT kommt, den bestraft das LEben — 음성은 spät을 이 단락에서 가장 높게 찍어요."],
+    ["발음", 6, "bestraft", "be- 뒤의 st도 어간 첫머리라 ‘슈트’: 베슈트라프트."],
+    ["강세", 7, "nicht", "das gilt NICHT für Azubis — 농담 포인트. 살짝 웃으면서."],
+    ["발음", 7, "Azubis", "z는 [ts]: 아추-비스. 강세는 ZU. Auszubildende(견습생)의 줄임말."],
+    ["쉼", 7, "@l", "웃음 쉼. 농담 뒤 잠깐 기다렸다가 다음 문장으로."],
+    ["강세", 8, "lieber", "lieber = LIE-ber. ‘차라리’의 느낌. ie는 긴 [iː]."],
+    ["강세", 9, "nie", "Besser SPÄT als NIE — 강세 두 개. nie에서 길게 내리며 마무리."]
+   ],
+   "why": [
+    ["… seit elf Monaten hier →", "올리며 쉬지 않고 이어서 다음 소식(아우스빌둥)을 기대하게 해요."],
+    ["Dafür möchte ich mich … bedanken", "진심을 담는 문장. 속도를 조금 늦추고 끝까지 한 흐름으로."],
+    ["인용구 두 개 „…“", "앞에서 짧게 쉬고, 인용구 안은 강세 리듬으로."],
+    ["Ich hoffe, das gilt nicht für Azubis", "장난스럽게. nicht에서 살짝 웃음."]
+   ],
+   "idi": [
+    {"de": "in die Ausbildung wechseln", "tag": "자주 같이 쓰는 말", "ko": "직업교육(아우스빌둥)으로 옮기다", "lit": "직업교육 안으로 바꾸다", "use": "wechseln in + 4격: in eine andere Abteilung wechseln = 다른 부서로 옮기다.", "reg": "중립", "s": 1},
+    {"de": "Ich möchte mich bei allen ganz herzlich bedanken.", "tag": "쓸모 있는 문장", "ko": "모든 분께 진심으로 감사드립니다", "lit": "모두에게 아주 진심으로 감사하고 싶습니다", "use": "격식 있는 감사 인사의 정석. sich bei jemandem bedanken = ~에게 감사하다.", "reg": "격식", "s": 3},
+    {"de": "spät dran sein", "tag": "자주 같이 쓰는 말", "ko": "늦다, 늦은 편이다", "lit": "차례가 늦게 오다", "use": "Ich bin spät dran = 저 늦었어요 / 늦깎이예요.", "reg": "구어", "s": 4},
+    {"de": "Wer zu spät kommt, den bestraft das Leben", "tag": "관용구", "ko": "늦게 오는 자는 인생이 벌한다", "lit": "", "use": "고르바초프가 한 말로 알려진 유명한 문장. 늦은 것을 두고 농담할 때.", "reg": "명언", "s": 6},
+    {"de": "sich an etwas halten", "tag": "자주 같이 쓰는 말", "ko": "~을 따르다, 고수하다", "lit": "~을 붙잡다", "use": "Ich halte mich lieber an … = 저는 차라리 …을 따를래요.", "reg": "중립", "s": 8},
+    {"de": "Besser spät als nie", "tag": "관용구", "ko": "안 하는 것보다 늦게라도 하는 게 낫다", "lit": "결코 안 하는 것보다 늦는 게 낫다", "use": "앞의 명언에 대한 재치 있는 대답.", "reg": "중립", "s": 9}
+   ],
+   "checks": [
+    "… hier에서 올리고 쉬지 않고 und darf …로 이어졌다",
+    "감사 문장이 bedanken까지 한 흐름으로 이어졌다",
+    "인용구 두 개 앞에서 짧게 쉬고, spät · Leben · nie에 강세가 들린다",
+    "spät의 sp를 ‘슈프’, Azubis의 z를 [ts]로 냈다"
+   ]
+  },
+  {
+   "id": "d", "key": "D", "title": "회사에 바라는 점",
+   "segs": [
+    ["So,", "↘"],
+    ["{jetzt} geht's[ɡeːts] ans {Ein}gemachte.[ˈaɪnɡəˌmaxtə]", "↘"],
+    ["Weil Deutsch nicht meine {Mut}tersprache[ˈmʊtɐˌʃpʁaːxə] ist, wünsche[ˈvʏnʃə] ich mir am Anfang etwas Ge{duld},[ɡəˈdʊlt]", "↘"],
+    ["be{son}ders[bəˈzɔndɐs] bei {Fach}begriffen.[ˈfaxbəˌɡʁɪfn̩]", "↘"],
+    ["Da verstehe[fɛɐˈʃteːə] ich manchmal {nur} {Bahn}hof.[ˈbaːnhoːf]", "↘", "laugh"],
+    ["{A}ber ich lerne visu{ell}:[viˈzuɛl]", "↘"],
+    ["Ein {Bild}[bɪlt] sagt mehr als {tau}send[ˈtaʊzn̩t] Worte.[ˈvɔʁtə]", "↘"],
+    ["Wenn man mir etwas {ein}mal zeigt,[tsaɪkt]", "→"],
+    ["verstehe ich es meistens {schnell}.", "↘"],
+    ["Ich würde[ˈvʏʁdə] mich auch über Unter{stüt}zung[ʊntɐˈʃtʏtsʊŋ] freuen,", "→"],
+    ["damit ich den Stoff der letzten Monate {nach}holen[ˈnaːxˌhoːlən] kann.", "↘"],
+    ["Und {nach} der {Aus}bildung", "→"],
+    ["möchte ich gern {Wei}terbildungen[ˈvaɪtɐˌbɪldʊŋən] machen,", "↘"],
+    ["denn {Ü}bung[ˈʔyːbʊŋ] macht den {Meis}ter.[ˈmaɪstɐ]", "↘"],
+    ["Und viel{leicht}[fiˈlaɪçt] {ir}gendwann[ˈɪʁɡn̩tˌvan]", "→"],
+    ["den {Uhr}machermeister.[ˈuːɐmaxɐˌmaɪstɐ]", "↘", "laugh"]
+   ],
+   "chunks": [[0, 1], [2], [3], [4], [5], [6], [7, 8], [9], [10], [11, 12], [13], [14, 15]],
+   "tr": "자, 이제 본론으로 들어가겠습니다. 독일어가 모국어가 아니라서, 처음에는 조금 인내심을 가져 주셨으면 합니다. 특히 전문 용어에서요. 그럴 땐 가끔 하나도 못 알아듣거든요. 하지만 저는 시각적으로 배웁니다. 백문이 불여일견이죠. 한 번 보여 주시면 대개 금방 이해합니다. 지난 몇 달간의 진도를 따라잡을 수 있게 도와주시면 정말 기쁘겠습니다. 그리고 직업교육을 마치면 추가 교육도 받고 싶습니다. 연습이 장인을 만드니까요. 그리고 언젠가는 시계 마이스터까지도요.",
+   "items": [
+    ["억양", 0, "@t", "So, 를 짧게 툭 떨어뜨리고 쉬어요 ↘. ‘자,’ 하고 화제를 바꾸는 신호."],
+    ["강세", 1, "Eingemachte", "Eingemachte = EIN-ge-mach-te. 음성은 jetzt를 높이 찍고 Eingemachte로 내려와요."],
+    ["발음", 1, "geht's", "geht's는 한 음절 [ɡeːts] ‘게-츠’. h는 소리 내지 않아요."],
+    ["강세", 2, "Muttersprache", "Muttersprache → MUT-ter-spra-che. 복합어 둘째 요소 첫머리라 sp도 [ʃp]."],
+    ["억양", 2, "@t", "쉼표지만 음성은 Geduld에서 내려요 ↘. 부탁을 한 번 매듭짓고 besonders …로 덧붙여요."],
+    ["강세", 3, "Fachbegriffen", "be-SON-ders bei FACH-be-grif-fen. a 뒤 ch는 목 안쪽 ‘흐’ [x]."],
+    ["강세", 4, "Bahnhof", "음성은 nur를 높이 찍고 BAHN-hof로 내려와요. h는 소리 없이 a를 길게: 바안호프."],
+    ["쉼", 4, "@l", "관용구 뒤 웃음 쉼. 청중이 웃을 시간이에요."],
+    ["강세", 5, "visuell", "visuell은 vi-su-ELL, 끝음절 강세(-ell 규칙). 외래어라 v는 [v]: 비주엘."],
+    ["강세", 6, "Bild", "Ein BILD sagt mehr als TAUsend Worte. Bild의 d는 [t]: 빌트."],
+    ["강세", 7, "einmal", "EINmal = ‘한 번만’. 이 강세로 ‘한 번 보여 주면 된다’는 뜻이 살아요."],
+    ["억양", 7, "@t", "Wenn-절 끝 zeigt에서 살짝 올리고 쉬지 않고 바로 verstehe로 이어요 →."],
+    ["강세", 9, "Unterstützung", "Unterstützung = un-ter-STÜT-zung. 셋째 음절! z는 [ts]."],
+    ["발음", 9, "würde", "ü를 동그랗게, r은 ‘어’처럼 약하게: 뷔어데."],
+    ["강세", 10, "nachholen", "nachholen(따라잡다)은 분리 동사라 접두사 NACH에 강세."],
+    ["강세", 11, "nach", "Und NACH der Ausbildung — ‘아우스빌둥이 끝난 뒤’라는 시간 대조. nach를 높게."],
+    ["억양", 11, "@t", "Ausbildung에서 쭉 올리고 쉬지 않고 möchte ich …로 이어요 →. 미래 이야기를 꺼내는 신호."],
+    ["강세", 13, "Übung", "Übung macht den Meister — Ü를 높게, MEIS에서 내려요. 다음 줄 말장난의 준비."],
+    ["발음", 13, "Übung", "denn과 Übung을 이어 붙이지 말고 Ü 앞에서 살짝 끊어요(성문 폐쇄음): 덴 | 위붕."],
+    ["강세", 14, "vielleicht", "vielleicht = viel-LEICHT. v는 [f]: 필라이히트. 음성도 leicht가 가장 높아요."],
+    ["억양", 14, "@t", "irgendwann을 높고 평평하게 끌어요 →. 음성은 쉬지 않고 잇지만, 발표에서는 여기서 반 박자 쉬어도 좋아요."],
+    ["강세", 15, "Uhrmachermeister", "UHRmachermeister — 앞 문장의 Meister와 말장난. Uhr를 높게 찍고 끝까지 내려요."],
+    ["쉼", 15, "@l", "말장난 뒤 웃음 쉼. 단락이 끝나는 곳이니 여유 있게."]
+   ],
+   "why": [
+    ["So, jetzt geht's ans Eingemachte", "소개에서 ‘바라는 점’으로 넘어가는 신호. So를 짧게 떨어뜨리고 쉬어요."],
+    ["Geduld · Unterstützung", "부탁하는 문장은 부드럽게, 조금 느리게."],
+    ["관용구 세 개", "Bahnhof · tausend Worte · Meister — 끝을 확실히 내리고 반 박자 쉬기."],
+    ["Und vielleicht irgendwann → den Uhrmachermeister", "irgendwann을 높고 평평하게 끌어 말장난을 살려요."]
+   ],
+   "idi": [
+    {"de": "Jetzt geht's ans Eingemachte", "tag": "관용구", "ko": "이제 본론(핵심)으로 들어가자", "lit": "이제 저장해 둔 절임 음식에 손댄다", "use": "발표에서 다음 파트로 넘어갈 때 쓰기 좋아요.", "reg": "구어", "s": 1},
+    {"de": "nur Bahnhof verstehen", "tag": "관용구", "ko": "하나도 못 알아듣다", "lit": "기차역만 알아듣다", "use": "Ich verstehe nur Bahnhof. 일상에서 정말 자주 써요.", "reg": "구어 · 비격식", "s": 4},
+    {"de": "Ein Bild sagt mehr als tausend Worte", "tag": "관용구", "ko": "백문이 불여일견", "lit": "그림 하나가 천 마디 말보다 많은 걸 말한다", "use": "시각적으로 배운다는 말을 뒷받침해요.", "reg": "중립", "s": 6},
+    {"de": "Ich würde mich über … freuen", "tag": "쓸모 있는 문장", "ko": "~해 주시면 기쁘겠습니다", "lit": "~에 대해 기뻐할 것입니다", "use": "공손하게 부탁할 때. 이메일·면접에서도 그대로 써요.", "reg": "격식 · 공손", "s": 9},
+    {"de": "den Stoff nachholen", "tag": "분리 동사", "ko": "(놓친) 진도를 따라잡다", "lit": "재료를 뒤에서 가져오다", "use": "Ich hole den Stoff nach. 학교·교육 상황에서 자주 나와요.", "reg": "중립", "s": 10},
+    {"de": "Übung macht den Meister", "tag": "관용구", "ko": "연습이 장인을 만든다", "lit": "", "use": "바로 뒤 Uhrmachermeister(시계 마이스터)와 말장난.", "reg": "중립", "s": 13}
+   ],
+   "checks": [
+    "So, 를 짧게 떨어뜨리고 쉬어 화제 전환이 들린다",
+    "Bahnhof · tausend Worte · Meister 관용구 끝을 확실히 내렸다",
+    "visuell(ELL), Unterstützung(STÜT), vielleicht(LEICHT) 강세가 맞다",
+    "denn | Übung처럼 모음 앞에서 이어 붙이지 않고 새로 시작했다"
+   ]
+  },
+  {
+   "id": "e", "key": "E", "title": "나에게 바라는 점 · 마무리",
+   "segs": [
+    ["Von mir {selbst}[zɛlpst] erwarte[ɛɐˈvaʁtə] ich, dass ich immer aktiv[aktiːf] {nach}frage[ˈnaːxˌfʁaːɡə]", "→"],
+    ["und dass man sich auf mich ver{las}sen[fɛɐˈlasn̩] kann.", "↘"],
+    ["{Au}ßerdem[ˈaʊsɐdeːm] möchte ich meine Er{fah}rungen[ɛɐˈfaːʁʊŋən] einbringen,[ˈaɪnˌbʁɪŋən]", "↘"],
+    ["zum Beispiel bei Social {Me}dia oder mit Kore{a}nisch.[koʁeˈaːnɪʃ]", "↘"],
+    ["Für {euch} ist Koreanisch wahrscheinlich ziemlich {schwer},[ʃveːɐ]", "↘"],
+    ["aber für {mich} zum Glück[ɡlʏk] {nicht}.", "↘"],
+    ["Dafür habe ich so{gar}[zoˈɡaːɐ] ein Zertifi{kat}.[tsɛʁtifiˈkaːt]", "↘"],
+    ["Damit bin ich am {En}de,", "↘"],
+    ["denn {al}les[ˈʔaləs] hat ein {En}de,[ˈʔɛndə]", "→"],
+    ["nur die {Wurst}[vʊʁst] hat {zwei}.[tsvaɪ]", "↘", "laugh"],
+    ["Vielen[ˈfiːlən] {Dank} –", "↘"],
+    ["und a{de}![aˈdeː]", "↘"]
+   ],
+   "chunks": [[0], [1], [2], [3], [4], [5], [6], [7], [8, 9], [10, 11]],
+   "tr": "저 자신에게는, 항상 적극적으로 질문하고 믿고 맡길 수 있는 사람이 되기를 기대합니다. 또 제 경험을 보태고 싶습니다. 예를 들면 소셜 미디어나 한국어로요. 여러분께는 한국어가 꽤 어렵겠지만, 저한테는 다행히 아니에요. 자격증까지 있거든요. 이것으로 마치겠습니다. 모든 것엔 끝이 있지만, 소시지만은 끝이 두 개죠. 감사합니다, 안녕히 계세요!",
+   "items": [
+    ["강세", 0, "selbst", "Von mir SELBST — 회사에서 ‘나 자신’으로 주제가 바뀌는 신호. 음성도 selbst가 가장 높아요."],
+    ["발음", 0, "selbst", "모음 앞 s는 [z], b는 [p]: 젤프스트. lbst 사이에 ‘으’를 넣지 않아요."],
+    ["발음", 0, "aktiv", "aktiv의 v는 [f]: 악티프. 음성은 앞 ak을 조금 더 세게 읽어요."],
+    ["강세", 0, "nachfrage", "NACHfrage — 분리 동사(nachfragen)라 접두사에 강세."],
+    ["억양", 0, "@t", "nachfrage에서 끝을 올리고 짧게 쉰 뒤 und dass …로 두 번째 다짐을 이어요 →."],
+    ["강세", 1, "verlassen", "verLASsen — ver-는 약하게, las에 힘."],
+    ["강세", 2, "Erfahrungen", "AUßerdem … ErFAHrungen. Er-는 ‘에어’처럼 r을 약하게 [ɛɐ]."],
+    ["강세", 3, "Koreanisch", "Koreanisch = ko-re-A-nisch. -isch 바로 앞 음절에 강세."],
+    ["강세", 4, "euch", "für EUCH ↔ 다음 줄 für MICH 대조. 이 두 단어가 문장의 뼈대예요."],
+    ["억양", 4, "@t", "쉼표지만 음성은 schwer에서 내려요 ↘. 앞 절을 완결하고 aber로 뒤집어요."],
+    ["강세", 5, "nicht", "zum Glück NICHT — 마지막 nicht를 찍고 확 내려요. 자신 있게."],
+    ["발음", 5, "Glück", "ü를 짧고 동그랗게 [ʏ], Gl 사이에 ‘으’ 없이: 글뤽."],
+    ["강세", 6, "Zertifikat", "Zertifikat = zer-ti-fi-KAT. 음성은 KAT에서 높이 찍고 바로 내려요. z는 [ts]."],
+    ["억양", 7, "@t", "Damit bin ich am Ende, 에서 한 번 내려 끝내는 척 ↘ … 다음 줄이 농담이에요."],
+    ["억양", 8, "@t", "denn alles hat ein Ende 에서는 끝을 올려요 →. ‘아직 남았다’는 신호, 펀치라인 준비."],
+    ["발음", 8, "Ende", "ein Ende, alles를 이어 붙이지 말고 모음 앞에서 살짝 끊어 새로 시작(성문 폐쇄음): ‘아이넨데’가 아니라 ‘아인 | 엔데’."],
+    ["강세", 9, "Wurst", "nur die WURST hat ZWEI — 펀치라인. w는 [v], zw는 [tsv]: 부어스트, 츠바이."],
+    ["쉼", 9, "@l", "농담 뒤 웃음 쉼. 1초 기다린 다음 Vielen Dank."],
+    ["강세", 11, "ade", "ade는 a-DE, 끝음절 강세. und와 ade 사이도 살짝 끊고(성문 폐쇄음) 밝게 마무리!"]
+   ],
+   "why": [
+    ["dass … und dass …", "dass절 두 개를 같은 리듬으로 나란히."],
+    ["Für euch … aber für mich …", "대조는 강세로. euch와 mich가 뼈대."],
+    ["denn alles hat ein Ende → | nur die Wurst hat zwei ↘", "올렸다가 확실히 내리는 마무리 농담."],
+    ["Vielen Dank – und ade!", "마지막은 웃으며 밝게."]
+   ],
+   "idi": [
+    {"de": "nachfragen", "tag": "분리 동사", "ko": "(되)물어보다, 확인차 묻다", "lit": "뒤따라 묻다", "use": "Ich frage lieber einmal mehr nach. 직장에서 좋은 태도로 들려요.", "reg": "중립", "s": 0},
+    {"de": "sich auf jemanden verlassen können", "tag": "자주 같이 쓰는 말", "ko": "~을 믿고 맡길 수 있다", "lit": "~에게 기댈 수 있다", "use": "직장에서 신뢰를 말할 때 꼭 나오는 표현.", "reg": "중립", "s": 1},
+    {"de": "Erfahrungen einbringen", "tag": "분리 동사", "ko": "(경험·능력을) 보태다, 기여하다", "lit": "경험을 안으로 가져오다", "use": "Ich bringe meine Erfahrungen ein. 자기소개·면접 단골 표현.", "reg": "중립", "s": 2},
+    {"de": "zum Glück", "tag": "자주 같이 쓰는 말", "ko": "다행히", "lit": "행운으로", "use": "aber für mich zum Glück nicht.", "reg": "중립", "s": 5},
+    {"de": "Alles hat ein Ende, nur die Wurst hat zwei", "tag": "관용구", "ko": "모든 것엔 끝이 있지만 소시지는 끝이 두 개", "lit": "", "use": "발표나 모임을 끝낼 때 쓰는 유쾌한 마무리 농담.", "reg": "구어 · 농담", "s": 9},
+    {"de": "Ade", "tag": "인사", "ko": "안녕히 계세요 (바덴·슈바벤식)", "lit": "", "use": "Grüß Gott로 시작해 Ade로 끝나는, 지역색 있는 구성.", "reg": "구어 · 지역", "s": 11}
+   ],
+   "checks": [
+    "für euch ↔ für mich 대조가 강세로 분명하다",
+    "Koreanisch(A), Zertifikat(KAT)의 강세와 z = [ts]가 맞다",
+    "denn alles hat ein Ende → 에서 올리고 nur die Wurst hat zwei ↘ 에서 내렸다",
+    "마지막 농담 뒤 1초 쉬고 Vielen Dank – und ade!를 밝게 말했다"
+   ]
+  }
+ ],
+ "fullChecks": [
+  "처음부터 끝까지 멈추지 않고 말했다",
+  "관용구·농담 뒤마다 웃음 쉼(약 1초)을 줬다",
+  "2분 30초 안에 끝났다 (모범 음성 {dur} + 웃음 쉼)",
+  "청중을 보며 웃는 부분이 있었다"
+ ],
+ "tips": [
+  "관용구를 말한 뒤 1초쯤 멈추고 웃음이 나올 틈을 주기 (본문의 ‘웃음’ 표시)",
+  "외우기 부담되면 Spieß · Bahnhof · Wurst 세 개만 남겨도 충분",
+  "„Tassen im Schrank“는 실제 가족 반응과 다르면 빼기",
+  "여성이라면 Uhrmacher → Uhrmacherin",
+  "Leitsätze 제안: „Es gibt keine dummen Fragen.“"
+ ]
+}
